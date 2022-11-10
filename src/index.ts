@@ -1,40 +1,28 @@
 /**
- * This program calculates a factorial using recursion.
+ * This program reverses a string using recursion.
  *
  * By:      Aidan Lalonde-Novales
  * Version: 1.0
  * Since:   2022-11-09
  */
 
-import promptSync from 'prompt-sync'
-
-const prompt = promptSync()
-
 /**
- * Calulates a factorial using recursion.
+ * Reverses a string with recursion.
  *
- * @param {number} userInt input from main
- * @returns {number} accurate calculation
+ * @param {string} input - input from main
+ * @returns {string} reversed string
  */
-function factorial(userInt: number): number {
-  if (userInt < 0) {
-    return -1
-  } else if (userInt === 0) {
-    return 1
+function reverse(input: string): string {
+  if (input === '') {
+    return input
   } else {
-    return userInt * factorial(userInt - 1)
+    return reverse(input.slice(1)) + input.slice(0, 1)
   }
 }
 
-// Input
-const userInput = prompt('enter factorial: ')
-const userInt = parseInt(userInput)
+const toBeReversed = 'recursion'
 
-// Process and Output
-if (!isNaN(userInt)) {
-  console.log(`\n${userInt}! = ${factorial(userInt)}`)
-} else {
-  console.log('\nPlease enter an integer next time.')
-}
+console.log(`\nOriginal String: ${toBeReversed}`)
+console.log(`\nReversed String: ${reverse(toBeReversed)}`)
 
 console.log('\nDone.')
